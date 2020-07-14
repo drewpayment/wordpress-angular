@@ -148,17 +148,11 @@ if ( is_multisite() ) {
 register_shutdown_function( 'shutdown_action_hook' );
 
 function include_angular_app( $dist_path ) {
-    $scripts = array(
-        'runtime.js',
-        'polyfills.js',
-        'styles.js',
-        'vendor.js',
-        'main.js'
-    );
+    $scripts = glob($dist_path . '/*.js');
 
     echo "<app-root></app-root>";
     foreach ($scripts as $script) {
-        echo "<script src='{$dist_path}/$script'></script>";
+        echo "<script src='$script'></script>";
     }
 }
 

@@ -15,6 +15,20 @@ if ( ! isset( $wp_did_header ) ) {
 	// Set up the WordPress query.
 	wp();
 
+    // load angular styles 
+    function include_angular_styles( $dist_path ) {
+        $styles = glob($dist_path . '/*.css');
+    
+        echo "<app-root></app-root>";
+        foreach ($styles as $style) {
+            echo "<link href='$style' rel='stylesheet' />";
+        }
+    }
+    
+    if ( USEANGULAR ) {
+        include_angular_styles('wp-angular/dist');
+    }
+
 	// Load the theme template.
 	require_once ABSPATH . WPINC . '/template-loader.php';
 
