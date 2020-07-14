@@ -147,6 +147,25 @@ if ( is_multisite() ) {
 
 register_shutdown_function( 'shutdown_action_hook' );
 
+function include_angular_app( $dist_path ) {
+    $scripts = array(
+        'runtime.js',
+        'polyfills.js',
+        'styles.js',
+        'vendor.js',
+        'main.js'
+    );
+
+    echo "<app-root></app-root>";
+    foreach ($scripts as $script) {
+        echo "<script src='{$dist_path}/$script'></script>";
+    }
+}
+
+if ( USEANGULAR ) {
+    include_angular_app('wp-angular/dist');
+}
+
 // Stop most of WordPress from being loaded if we just want the basics.
 if ( SHORTINIT ) {
 	return false;

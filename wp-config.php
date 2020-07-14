@@ -81,6 +81,8 @@ define( 'WP_DEBUG', true );
 
 define('JWT_AUTH_SECRET_KEY', 'secret');
 
+define( 'USEANGULAR', true );
+
 /* That's all, stop editing! Happy publishing. */
 
 /** Absolute path to the WordPress directory. */
